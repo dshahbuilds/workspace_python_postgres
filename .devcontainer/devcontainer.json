@@ -1,17 +1,19 @@
 {
-  "name": "Minimal Sandbox",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-ossdata.vscode-postgresql"
-      ]
-    }
-  },
-  "remoteUser": "vscode"
+    "name": "Vanilla Ubuntu Sandbox",
+    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+    
+    // Configure tool-specific properties
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools"
+            ]
+        }
+    },
+
+    // Runs commands after the container is created
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y curl git",
+
+    // Use 'remoteUser' to connect as a non-root user
+    "remoteUser": "vscode"
 }
