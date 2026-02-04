@@ -1,26 +1,17 @@
 {
-  "name": "Python & Postgres Data Eng",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12",
-  "features": {
-    "ghcr.io/devcontainers/features/postgres:1": {
-      "version": "16",
-      "databaseName": "data_eng_db",
-      "adminPassword": "mypassword"
-    }
+  "name": "Monolith Sandbox",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
   },
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "ms-ossdata.vscode-postgresql",
-        "charliermarsh.ruff",
-        "ms-toolsai.jupyter",
-        "ms-toolsai.datawrangler",
-        "mechatroner.rainbow-csv"
+        "ms-ossdata.vscode-postgresql"
       ]
     }
   },
-  "postCreateCommand": "pip install -r requirements.txt",
   "remoteUser": "vscode"
 }
