@@ -1,19 +1,27 @@
 {
-    "name": "Vanilla Ubuntu Sandbox",
-    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+    "name": "Minimal Ubuntu Sandbox",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     
-    // Configure tool-specific properties
+    // Log in as the 'vscode' user (mimicking a local system user)
+    "remoteUser": "vscode",
+    "containerUser": "vscode",
+
+    "features": {
+        // We are avoiding 'features' as requested, so we use the script below
+    },
+
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-vscode.cpptools"
+                "ms-python.python",
+                "mtxr.sqltools",
+                "mtxr.sqltools-driver-pg"
             ]
         }
     },
 
-    // Runs commands after the container is created
-    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y curl git",
+    // Grants the vscode user 'NOPASSWD' sudo power and runs the setup
+    "postCreateCommand": "echo 'vscode ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/vscode && bash .devcontainer/setup.sh",
 
-    // Use 'remoteUser' to connect as a non-root user
-    "remoteUser": "vscode"
+    "forwardPorts": [5432]
 }

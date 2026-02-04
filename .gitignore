@@ -1,0 +1,13 @@
+# Python 
+__pycache__/
+.venv/
+*.py[cod]
+
+# Postgres / Data
+pgdata/
+*.log
+*.sql
+
+# System / VS Code
+.vscode/
+.DS_Store
