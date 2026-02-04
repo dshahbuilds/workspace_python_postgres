@@ -1,5 +1,5 @@
 {
-  "name": "Monolith Sandbox",
+  "name": "Minimal Sandbox",
   "build": {
     "dockerfile": "Dockerfile",
     "context": ".."
